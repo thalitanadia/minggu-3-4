@@ -1,0 +1,83 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyODx3bo4jgtYxliUTfTRlLI",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/thalitanadia/minggu-3-4/blob/main/pertemuan4.2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UcZd6YPF7MNW",
+        "outputId": "897dea39-4cc1-44c1-959a-7059c0f8a568"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "        Mean     Median    Std Dev  Skewness  Kurtosis\n",
+            "A  56.740000  61.500000  26.977549 -0.213114 -1.108942\n",
+            "B  27.276151  26.838239  12.568984 -0.010309 -1.042233\n",
+            "C  28.438699  28.707032   9.763786  0.044106 -0.690192\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "from scipy.stats import skew, kurtosis\n",
+        "\n",
+        "np.random.seed(42)\n",
+        "data = {\n",
+        "    \"A\": np.random.randint(10, 100, 50),\n",
+        "    \"B\": np.random.uniform(5, 50, 50),\n",
+        "    \"C\": np.random.normal(30, 10, 50)\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "mean_values = df.mean()\n",
+        "median_values = df.median()\n",
+        "std_values = df.std()\n",
+        "skewness_values = df.apply(skew)\n",
+        "kurtosis_values = df.apply(kurtosis)\n",
+        "\n",
+        "measurements = pd.DataFrame({\n",
+        "    \"Mean\": mean_values,\n",
+        "    \"Median\": median_values,\n",
+        "    \"Std Dev\": std_values,\n",
+        "    \"Skewness\": skewness_values,\n",
+        "    \"Kurtosis\": kurtosis_values\n",
+        "})\n",
+        "\n",
+        "print(measurements)"
+      ]
+    }
+  ]
+}
