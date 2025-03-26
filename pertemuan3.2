@@ -1,0 +1,119 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMqMdXP0bl00uB2KeJMEN0h",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/thalitanadia/minggu-3-4/blob/main/pertemuan3.2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "Ny1ODa4Q6z6o",
+        "outputId": "c1d6f346-413d-4366-c3fb-9ec34e0d6db7",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 686
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "   ID Category  Value1    Value2  Timestamp\n",
+            "0   1        C      72  8.566242 2024-01-01\n",
+            "1   2        D      27  4.094760 2024-01-02\n",
+            "2   3        A      99  2.476704 2024-01-03\n",
+            "3   4        C      53  4.350383 2024-01-04\n",
+            "4   5        C      43  8.754628 2024-01-05\n",
+            "5   6        D      83  3.677058 2024-01-06\n",
+            "6   7        A      71  6.681521 2024-01-07\n",
+            "7   8        A      23  1.504163 2024-01-08\n",
+            "8   9        C      57  4.320551 2024-01-09\n",
+            "9  10        B      24  3.938250 2024-01-10\n",
+            "\n",
+            "Missing Values:\n",
+            " ID           0\n",
+            "Category     0\n",
+            "Value1       0\n",
+            "Value2       0\n",
+            "Timestamp    0\n",
+            "dtype: int64\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "ValueError",
+          "evalue": "could not convert string to float: 'C'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-1-9979ec9ccdaa>\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     17\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mhead\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m10\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     18\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"\\nMissing Values:\\n\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0misnull\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msum\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 19\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"\\nCorrelation Matrix:\\n\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcorr\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     20\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     21\u001b[0m \u001b[0magg_df\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Category\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0magg\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m{\u001b[0m\u001b[0;34m\"Value1\"\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0;34m\"mean\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m\"Value2\"\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0;34m\"sum\"\u001b[0m\u001b[0;34m}\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreset_index\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py\u001b[0m in \u001b[0;36mcorr\u001b[0;34m(self, method, min_periods, numeric_only)\u001b[0m\n\u001b[1;32m  11047\u001b[0m         \u001b[0mcols\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mdata\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcolumns\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m  11048\u001b[0m         \u001b[0midx\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mcols\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcopy\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m> 11049\u001b[0;31m         \u001b[0mmat\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mdata\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mto_numpy\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mfloat\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mna_value\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mnan\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcopy\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mFalse\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m  11050\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m  11051\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mmethod\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"pearson\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py\u001b[0m in \u001b[0;36mto_numpy\u001b[0;34m(self, dtype, copy, na_value)\u001b[0m\n\u001b[1;32m   1991\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mdtype\u001b[0m \u001b[0;32mis\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1992\u001b[0m             \u001b[0mdtype\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1993\u001b[0;31m         \u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_mgr\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mas_array\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcopy\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mcopy\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mna_value\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mna_value\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1994\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdtype\u001b[0m \u001b[0;32mis\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0mdtype\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1995\u001b[0m             \u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0masarray\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mresult\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdtype\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/pandas/core/internals/managers.py\u001b[0m in \u001b[0;36mas_array\u001b[0;34m(self, dtype, copy, na_value)\u001b[0m\n\u001b[1;32m   1692\u001b[0m                 \u001b[0marr\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mflags\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwriteable\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mFalse\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1693\u001b[0m         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1694\u001b[0;31m             \u001b[0marr\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_interleave\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mna_value\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mna_value\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1695\u001b[0m             \u001b[0;31m# The underlying data was copied within _interleave, so no need\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1696\u001b[0m             \u001b[0;31m# to further copy if copy=True or setting na_value\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/pandas/core/internals/managers.py\u001b[0m in \u001b[0;36m_interleave\u001b[0;34m(self, dtype, na_value)\u001b[0m\n\u001b[1;32m   1751\u001b[0m             \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1752\u001b[0m                 \u001b[0marr\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mblk\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget_values\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdtype\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1753\u001b[0;31m             \u001b[0mresult\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mrl\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mindexer\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0marr\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1754\u001b[0m             \u001b[0mitemmask\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mrl\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mindexer\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;36m1\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1755\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mValueError\u001b[0m: could not convert string to float: 'C'"
+          ]
+        }
+      ],
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "np.random.seed(42)\n",
+        "data = {\n",
+        "    \"ID\": range(1, 101),\n",
+        "    \"Category\": np.random.choice([\"A\", \"B\", \"C\", \"D\"], 100),\n",
+        "    \"Value1\": np.random.randint(10, 100, 100),\n",
+        "    \"Value2\": np.random.uniform(1.5, 9.5, 100),\n",
+        "    \"Timestamp\": pd.date_range(\"2024-01-01\", periods=100, freq=\"D\")\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "print(df.head(10))\n",
+        "print(\"\\nMissing Values:\\n\", df.isnull().sum())\n",
+        "print(\"\\nCorrelation Matrix:\\n\", df.corr())\n",
+        "\n",
+        "agg_df = df.groupby(\"Category\").agg({\"Value1\": \"mean\", \"Value2\": \"sum\"}).reset_index()\n",
+        "print(\"\\nAggregated Data:\\n\", agg_df)\n",
+        "\n",
+        "plt.figure(figsize=(10, 5))\n",
+        "sns.barplot(x=\"Category\", y=\"Value1\", data=agg_df, palette=\"viridis\")\n",
+        "plt.title(\"Average Value1 per Category\")\n",
+        "plt.show()\n",
+        "\n",
+        "plt.figure(figsize=(8, 4))\n",
+        "sns.lineplot(x=\"Timestamp\", y=\"Value1\", data=df, color=\"red\")\n",
+        "plt.title(\"Trend of Value1 Over Time\")\n",
+        "plt.xticks(rotation=45)\n",
+        "plt.show()"
+      ]
+    }
+  ]
+}
