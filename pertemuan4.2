@@ -1,0 +1,85 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOfBodFJ4fce3uAapBslmnS",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/thalitanadia/minggu-3-4/blob/main/pertemuan4.2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tMDhV00E8hp2",
+        "outputId": "2fc551ad-a8fd-4ecb-985c-b009d47e227a"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Model Accuracy: 0.53\n"
+          ]
+        }
+      ],
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.preprocessing import StandardScaler\n",
+        "from sklearn.ensemble import RandomForestClassifier\n",
+        "from sklearn.metrics import accuracy_score\n",
+        "\n",
+        "np.random.seed(42)\n",
+        "data = {\n",
+        "    \"Feature1\": np.random.randint(1, 100, 200),\n",
+        "    \"Feature2\": np.random.uniform(0.5, 10.5, 200),\n",
+        "    \"Feature3\": np.random.normal(50, 15, 200),\n",
+        "    \"Label\": np.random.choice([0, 1], 200)\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "X = df.drop(columns=[\"Label\"])\n",
+        "y = df[\"Label\"]\n",
+        "\n",
+        "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n",
+        "\n",
+        "scaler = StandardScaler()\n",
+        "X_train_scaled = scaler.fit_transform(X_train)\n",
+        "X_test_scaled = scaler.transform(X_test)\n",
+        "\n",
+        "model = RandomForestClassifier(n_estimators=100, random_state=42)\n",
+        "model.fit(X_train_scaled, y_train)\n",
+        "\n",
+        "y_pred = model.predict(X_test_scaled)\n",
+        "accuracy = accuracy_score(y_test, y_pred)\n",
+        "\n",
+        "print(f\"Model Accuracy: {accuracy:.2f}\")"
+      ]
+    }
+  ]
+}
